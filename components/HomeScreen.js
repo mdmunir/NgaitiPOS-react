@@ -13,18 +13,8 @@ class HomeScreen extends Component {
     return (
       <View style={{flex:1,justifyContent: 'center'}}>
         <Button
-          onPress={() => this.props.navigation.navigate('Satu')}
-          title="Go to Satu"
-          style={{flex:1, height:50}}
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('Dua')}
-          title="Go to Dua"
-          style={{flex:1, height:50}}
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('Tiga')}
-          title="Go to Tiga"
+          onPress={() => this.props.navigation.navigate('product')}
+          title="Go to Products"
           style={{flex:1, height:50}}
         />
       </View>

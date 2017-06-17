@@ -10,12 +10,14 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-const HomeScreen = require('./components/HomeScreen');
-const SatuScreen = require('./components/SatuScreen');
+var HomeScreen = require('./components/HomeScreen');
+var ProductScreen = require('./components/ProductScreen');
+var AddProductScreen = require('./components/AddProductScreen');
 
 const ngepos = StackNavigator({
-  Home: { screen: HomeScreen },
-  Satu: { screen: SatuScreen },
-});
+  home: { screen: HomeScreen },
+  product: { screen: ProductScreen },
+  add_product: { screen: AddProductScreen },
+}, { initialRouteName: 'home' });
 
 AppRegistry.registerComponent('ngepos', () => ngepos);
