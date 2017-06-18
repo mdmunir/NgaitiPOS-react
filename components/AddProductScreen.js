@@ -5,6 +5,7 @@ import {
     View,
     TextInput
 } from 'react-native';
+const FormProduct = require('./FormProduct');
 
 let realm = require('../realmdb/RealmInit');
 
@@ -21,41 +22,15 @@ class AddProductScreen extends Component {
             qty: 0.0
         };
     }
-    addProduct() {
+    addProduct(data) {
         realm.write(() => {
-            realm.create('Product', this.state);
+            realm.create('Product', data);
         });
         this.props.navigation.navigate('product');
     }
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <TextInput placeholder="Name"
-                    style={{ flex: 1 }}
-                    onChangeText={(text) => this.setState({ name: text })}
-                    value={this.state.name}
-                />
-                <TextInput placeholder="Category"
-                    style={{ flex: 1 }}
-                    onChangeText={(text) => this.setState({ category: text })}
-                    value={this.state.category}
-                />
-                <TextInput placeholder="Price" keyboardType="numeric"
-                    style={{ flex: 1 }}
-                    onChangeText={(text) => this.setState({ price: parseFloat(text) })}
-                    value={this.state.price + ''}
-                />
-                <TextInput placeholder="Quantity" keyboardType="numeric"
-                    style={{ flex: 1 }}
-                    onChangeText={(text) => this.setState({ qty: parseFloat(text) })}
-                    value={this.state.qty + ''}
-                />
-                <Button
-                    onPress={() => this.addProduct()}
-                    title="Save"
-                    style={{ flex: 1 }}
-                />
-            </View>
+            <FormProduct values={this.state} onSave={this.addProduct.bind(this)}/>
         );
     }
 }
